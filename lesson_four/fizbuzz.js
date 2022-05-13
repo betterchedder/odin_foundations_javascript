@@ -1,18 +1,25 @@
 let fizzBuzzResult = document.querySelector('.fizzBuzzOutput');
 const fizzBuzzButton = document.querySelector('.fizzBuzzButton');
 
-function fizzBuzz () {
-    let numberInput = document.querySelector('.fizzBuzzInput').value;
-    console.log(numberInput)
-    console.log(parseInt(numberInput) % 3)
-    if ((parseInt(numberInput) % 5 === 0) & (parseInt(numberInput) % 3 === 0)) {
-        fizzBuzzResult.textContent = 'fizzbuzz'
-    } else if ((parseInt(numberInput) % 3 === 0)) {
-        fizzBuzzResult.textContent = 'fizz'
-    } else if ((parseInt(numberInput) % 5 === 0)) {
-        fizzBuzzResult.textContent = 'buzz'
+function currNumberResult (numberToGetResult) {
+    let currentResult;
+    if ((parseInt(numberToGetResult) % 5 === 0) & (parseInt(numberToGetResult) % 3 === 0)) {
+        currentResult = 'fizzbuzz';
+    } else if ((parseInt(numberToGetResult) % 3 === 0)) {
+        currentResult = 'fizz';
+    } else if ((parseInt(numberToGetResult) % 5 === 0)) {
+        currentResult = 'buzz';
     } else {
-        fizzBuzzResult.textContent = numberInput
+        currentResult = numberToGetResult;
+    }
+
+    return currentResult
+}
+
+function fizzBuzz () {
+    inputNumber = document.querySelector('.fizzBuzzInput').value;
+    for (currNumber=1; currNumber <= inputNumber; currNumber++) {
+        fizzBuzzResult.textContent = fizzBuzzResult.textContent + currNumberResult(currNumber) + ' ';
     }
 
     return fizzBuzzResult
