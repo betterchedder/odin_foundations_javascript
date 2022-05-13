@@ -19,7 +19,7 @@ function currNumberResult (numberToGetResult) {
 function fizzBuzz () {
     inputNumber = document.querySelector('.fizzBuzzInput').value;
     for (currNumber=1; currNumber <= inputNumber; currNumber++) {
-        fizzBuzzResult.textContent = fizzBuzzResult.textContent + currNumberResult(currNumber) + ' ';
+        fizzBuzzResult.innerHTML = fizzBuzzResult.textContent + currNumberResult(currNumber) + ' ';
     }
 
     return fizzBuzzResult
