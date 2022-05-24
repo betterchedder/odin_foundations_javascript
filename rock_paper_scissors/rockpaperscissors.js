@@ -11,7 +11,7 @@ let playResultOption = {
   'SCISSORS-SCISSORS': 'Tie'
 };
 
-function computerPlay () {
+const computerPlay = function () {
     
   var possibleValue = [
       "Rock",
@@ -25,17 +25,29 @@ function computerPlay () {
   return randomPlay
 };
 
-function rps (userOption, computerOption) {
+const rps = function (userOption, computerOption) {
   jointPlay = userOption.toUpperCase() + '-' + computerOption.toUpperCase()
   console.log(jointPlay)
   result = playResultOption[jointPlay]
   return result
 };
 
-function game (playerOption) {
-  console.log(playerOption)
-  console.log(rps(userOption=playerOption, computerOption = computerPlay()))
+const displayResults = function (result) {
+  resultContainer = document.querySelector('#resultContainer');
+  const resultContainerOutput = document.createElement('div');
+  resultContainerOutput.classList.add('resultOutput');
 
+  resultContainerOutput.textContent = "You " + result;
+
+  resultContainerOutput.style.cssText = 'display: flex; justify-content: center; font-size: 55px';
+  
+  resultContainer.append(resultContainerOutput);
+
+}
+
+const game = function (playerOption) {
+  result = rps(userOption=playerOption, computerOption = computerPlay());
+  displayResults(result);
 };
 
 const buttonContainer = document.getElementById('optionsContainer');
