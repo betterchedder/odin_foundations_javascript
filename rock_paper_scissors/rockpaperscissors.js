@@ -1,42 +1,49 @@
 
 let playResultOption = {
   'ROCK-PAPER': 'Lose',
-  'ROCK-SCISSOR': 'Win',
+  'ROCK-SCISSORS': 'Win',
   'ROCK-ROCK': 'Tie',
   'PAPER-ROCK': 'Win',
-  'PAPER-SCISSOR': 'Lose',
+  'PAPER-SCISSORS': 'Lose',
   'PAPER-PAPER': 'Tie',
-  'SCISSOR-ROCK': 'Lose',
-  'SCISSOR-PAPER': 'Win',
-  'SCISSOR-SCISSOR': 'Tie'
-}
+  'SCISSORS-ROCK': 'Lose',
+  'SCISSORS-PAPER': 'Win',
+  'SCISSORS-SCISSORS': 'Tie'
+};
 
 function computerPlay () {
     
   var possibleValue = [
       "Rock",
       "Paper",
-      "Scissor"
+      "Scissors"
     ]
     
   let randomPlay = possibleValue[Math.floor(Math.random() * possibleValue.length)];
 
   console.log(randomPlay)
   return randomPlay
-}
+};
 
 function rps (userOption, computerOption) {
   jointPlay = userOption.toUpperCase() + '-' + computerOption.toUpperCase()
   console.log(jointPlay)
   result = playResultOption[jointPlay]
   return result
-}
+};
 
-function game () {
-  for (let round = 0; round <= 5; round++) {
-    getUserInput = window.prompt('Rock, paper, or scissors?');
-    console.log(rps(userOption=getUserInput, computerOption = computerPlay()))
+function game (playerOption) {
+  console.log(playerOption)
+  console.log(rps(userOption=playerOption, computerOption = computerPlay()))
+
+};
+
+const buttonContainer = document.getElementById('optionsContainer');
+
+buttonContainer.addEventListener('click', (event) => {
+  const eventIsButton = event.target.nodeName === 'BUTTON';
+
+  if (eventIsButton) {
+    game(event.target.innerText)
   }
-}
-
-game()
+})
